@@ -1,0 +1,9 @@
+<% @user.each_with_index do |user, index| %>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">User: <%= user.user_name%> </h5>
+    
+    <a href='/users/<%= index + 1 %>' class="card-link"> User number <%= index + 1 %></a> (click it)
+  </div>
+</div>
+<%  end %>

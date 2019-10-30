@@ -5,12 +5,7 @@ class GossipsController < ApplicationController
     end
 
     def show
-        @gossip = Gossip.all
-        @loutre = @gossip.find(params[:id])
-    end
-
-    def id_index
-        @id = params[:id]
+        @gossip = Gossip.find(params[:id])
     end
 
     def new
@@ -18,20 +13,27 @@ class GossipsController < ApplicationController
     end
     
     def create
-        @user = User.create(user_name: params[:user_name])
-        @gossip = Gossip.create(user_id: @user.id , content: params[:content])
-        redirect_to '/gossips/'
+        @user = User.new(user_name: params[:user_name])
+            @user.save
+                @gossip = Gossip.new(user_id: @user.id , content: params[:content])
+        if @gossip.save
+            redirect_to gossips_path
+        else
+            user.destroy 
+                render :new
+        end
     end
 
     
     def edit
-        # Méthode qui récupère le potin concerné et l'envoie à la view edit (edit.html.erb) pour affichage dans un formulaire d'édition
+        @gossip = Gossip.find(params[:id])
     end
     
     def update
-        # Méthode qui met à jour le potin à partir du contenu du formulaire de edit.html.erb, soumis par l'utilisateur
-        # pour info, le contenu de ce formulaire sera accessible dans le hash params
-        # Une fois la modification faite, on redirige généralement vers la méthode show (pour afficher le potin modifié)
+        @gossip = Gossip.find(params[:id])
+            gossip_params = params.require(:gossip).permit(:body, :content)
+                @gossip.update(gossip_params)
+                    redirect_to gossip_path
     end
     
     def destroy

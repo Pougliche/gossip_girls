@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-  resources :gossips  
+  resources :gossips do
+    resources :users
+  end 
+  resources :users
 end

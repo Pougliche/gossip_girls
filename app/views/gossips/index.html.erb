@@ -3,18 +3,26 @@
   <title>The Gossip Project</title>
 </head>
 <body>
-  <h1> My really cool gossip joint ! </h1>
-  <p> Welcome! <a href ='/gossips/new'> Click here to add a new gossip ! </a> </br>
-   Here is all the juice : </p>
 
+<div class="card-columns'">
 
+<% @gossip.each_with_index do |gossip, index| %>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Author: <%= gossip.user.user_name%> </h5>
+    <p class="card-text">Story: <%= gossip.content %> </p>
+    <a href='/gossips/<%= index + 1 %>' class="card-link"> Gossip number <%= index + 1 %></a>
+  </div>
+</div>
+</div>
+<%  end %>
 
-  <% @gossip.each_with_index do |gossip, index| %>
-  <p>
-    <a href='/gossips/<%= index + 1 %>'> N°<%= index + 1 %></a><br/>
-       Author: <%= gossip.user.user_name%>     <br/>
-       Story: <%= gossip.content %>
-  </p>
-   <%  end %>
+<footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Gossip Incorporated 2019</p>
+    </div>
+    
+  </footer>
+
 </body>
 </html>
