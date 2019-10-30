@@ -7,7 +7,6 @@ List of actions to do before enjoying the gos' :
     $bundle install
     $rails db:create
     $rails db:migrate
-    $rails db:seed
     $rails server
 
 Then go to your local host 3000 and appreciate the revolutionary design of our website!
