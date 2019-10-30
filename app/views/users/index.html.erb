@@ -3,7 +3,7 @@
   <div class="card-body">
     <h5 class="card-title">User: <%= user.user_name%> </h5>
     
-    <a href='/users/<%= index + 1 %>' class="card-link"> User number <%= index + 1 %></a> (click it)
+    <a class="card-link" <%= link_to "SHOW ME THE USER", user_path(user.id)%></a>
   </div>
 </div>
 <%  end %>
