@@ -13,7 +13,11 @@ def new
 end
 
 def create
-    @user = User.create(password_digest: params[:password_digest], email: params[:email],user_name: params[:user_name])
+    @user = User.new
+    @user.password = params[:password_digest]
+    @user.email = params[:email]
+    @user.user_name = params[:user_name]
+    @user.save
     if @user.save
         redirect_to gossips_path
     else

@@ -5,7 +5,7 @@
 <form action= <%= users_path %> method="POST">
   <p> Your Username : </p> <input type="text" name="user_name">
   <p> Your Email : </p> <input type="text" name="email"> 
-  <p> Your Password : </p> <input type="text" name="password_digest">
+  <p> Your Password : </p> <input type="password" name="password_digest">
   </br> </br>
   <input type="submit" value="Create a new account">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
