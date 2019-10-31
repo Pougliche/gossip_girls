@@ -9,7 +9,7 @@ class GossipsController < ApplicationController
     end
 
     def new
-        # Méthode qui crée un potin vide et l'envoie à une view qui affiche le formulaire pour 'le remplir' (new.html.erb)
+        
     end
     
     def create
@@ -19,8 +19,7 @@ class GossipsController < ApplicationController
         if @gossip.save
             redirect_to gossips_path
         else
-            user.destroy 
-                render :new
+            render :new
         end
     end
 
@@ -39,7 +38,7 @@ class GossipsController < ApplicationController
     def destroy
         @gossip = Gossip.find(params[:id])
             @gossip.destroy
-            redirect_to gossips_path
+                redirect_to gossips_path
     end
 
 

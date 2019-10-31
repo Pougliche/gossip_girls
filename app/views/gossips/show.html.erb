@@ -1,5 +1,5 @@
 
-
+<center>
 <div class="card" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title">   Author: <%= @gossip.user.user_name%> </h5>
@@ -12,3 +12,4 @@
   <a class="btn btn-primary mx-3" href ='/gossips/'> Return to the index </a>
 <a class="btn btn-dark mx-3" <%= link_to "Edit Gossip", edit_gossip_path(@gossip.id)%></a>
 <a class="btn btn-danger mx-3" data-confirm="Are you sure?" data-method="DELETE" <%= link_to "Delete Gossip", gossip_path(@gossip.id)%></a>
+</center>
