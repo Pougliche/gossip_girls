@@ -62,7 +62,7 @@ class GossipsController < ApplicationController
     def authenticate_user
 		unless current_user.id == @gossip.user.id
 		  flash[:danger] = "Restricted Area"
-		  redirect_to gosssips_path
+		  redirect_to gossips_path
 		end
 	end
 
