@@ -8,5 +8,6 @@ List of actions to do before enjoying the gos' :
     $rails db:create
     $rails db:migrate
     $rails server
+    
 
-Then go to your local host 3000 and appreciate the revolutionary design of our website!
+Then go to your local host 3000 and appreciate the revolutionary design of our website at                                   http://localhost:3000/gossips/
