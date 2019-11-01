@@ -5,6 +5,7 @@ This website hosted locally on a rails server will allow you to check some juicy
 List of actions to do before enjoying the gos' :
 
     $bundle install
+    $rails db:reset
     $rails db:create
     $rails db:migrate
     $rails server
