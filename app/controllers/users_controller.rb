@@ -1,29 +1,38 @@
 class UsersController < ApplicationController
 
-def index
+    skip_before_action :only_signed_in, only: [:new, :create]
+
+    def index
     @user = User.all
-end
-
-def show
-    @user = User.find(params[:id])
-end
-
-def new
-    
-end
-
-def create
-    @user = User.new
-    @user.password = params[:password_digest]
-    @user.email = params[:email]
-    @user.user_name = params[:user_name]
-    @user.save
-    if @user.save
-        redirect_to gossips_path
-    else
-        render :new
     end
+
+    def show
+    @user = User.find(params[:id])
+    end
+
+    def new
+    @user = User.new
+    end
+
+    def create
+        user_params = params.require(:user).permit(:user_name, :email, :password, :password_confirmation)
+        @user = User.new(user_params)
+
+        if @user.valid?
+        @user.save
+        redirect_to gossips_path, success: "User created!"
+
+        else
+        render :new
     
-end
+        end
+
+    end
+
+    private
+
+	def user_params
+		return params.require(:user).permit(:user_name, :email, :password_digest )
+	end
 
 end

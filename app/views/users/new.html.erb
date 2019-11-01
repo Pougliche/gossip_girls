@@ -1,16 +1,48 @@
-<center><h2> Create and account and submit your gossips to your friends ! </h2>
+<center>
 
-</br> 
+<div class="panel panel-default">
+    <div class="panel-heading">Create an account</div>
+    <div class="panel-body">
 
-<form action= <%= users_path %> method="POST">
-  <p> Your Username : </p> <input type="text" name="user_name">
-  <p> Your Email : </p> <input type="text" name="email"> 
-  <p> Your Password : </p> <input type="password" name="password_digest">
-  </br> </br>
-  <input type="submit" value="Create a new account">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-</form> 
+<%= form_for @user, class: "form-horizontal" do |f| %>
 
-</br>
+<div class="form-group">
+<%= f.label :user_name, "Username", class: 'col-md4 control-label' %>
+<div class="col-md-6">
+  <%= f.text_field :user_name, class: 'form-control' %>
+ </div>
+  </div>
 
-<a href ='/gossips/'> Click here to return to the index ! </a> </center>
+  <div class="form-group">
+<%= f.label :email, "Email", class: 'col-md4 control-label' %>
+<div class="col-md-6">
+  <%= f.email_field :email, class: 'form-control' %>
+ </div>
+  </div>
+
+  <div class="form-group">
+<%= f.label :password, "Password", class: 'col-md4 control-label' %>
+<div class="col-md-6">
+  <%= f.password_field :password, class: 'form-control' %>
+ </div>
+  </div>
+
+    <div class="form-group">
+<%= f.label :password_confirmation, "Confirm Password", class: 'col-md4 control-label' %>
+<div class="col-md-6">
+  <%= f.password_field :password_confirmation, class: 'form-control' %>
+  </div>
+  </div>
+
+  <div class="form-group">
+  <div class="col-md-6 col-md-offset-4">
+  <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+  </div>
+<% end %>
+
+
+
+<a href ='/gossips/'> Click here to return to the index ! </a> 
+
+</center>

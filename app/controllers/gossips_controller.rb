@@ -1,5 +1,9 @@
 class GossipsController < ApplicationController
 
+    before_action :set_gossip, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate_user, only: [:edit, :update, :destroy]
+
+
     def index 
         @gossip = Gossip.all 
     end
@@ -9,13 +13,14 @@ class GossipsController < ApplicationController
     end
 
     def new
-        
+        @gossip = Gossip.new
     end
     
     def create
-        @user = User.new(user_name: params[:user_name])
-            @user.save
-                @gossip = Gossip.new(user_id: @user.id , content: params[:content])
+                
+        @gossip = Gossip.new(gossip_params)
+        @gossip.user = User.find_by(id: current_user.id)
+
         if @gossip.save
             redirect_to gossips_path
         else
@@ -42,4 +47,23 @@ class GossipsController < ApplicationController
     end
 
 
-end
+    end
+
+    private
+
+	def gossip_params
+		return params.require(:gossip).permit(:content)
+    end
+    
+    def set_gossip
+        @gossip = Gossip.find(params[:id])
+    end
+
+    def authenticate_user
+		unless current_user.id == @gossip.user.id
+		  flash[:danger] = "Restricted Area"
+		  redirect_to gosssips_path
+		end
+	end
+
+

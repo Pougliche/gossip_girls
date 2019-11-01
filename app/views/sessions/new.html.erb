@@ -1,0 +1,32 @@
+<center>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+
+<%= form_for :user, url: sessions_path, class: "form-horizontal" do |f| %>
+
+  <div class="form-group">
+<%= f.label :email, "Email", class: 'col-md4 control-label' %>
+<div class="col-md-6">
+  <%= f.email_field :email, class: 'form-control' %>
+ </div>
+  </div>
+
+  <div class="form-group">
+<%= f.label :password, "Password", class: 'col-md4 control-label' %>
+<div class="col-md-6">
+  <%= f.password_field :password, class: 'form-control' %>
+ </div>
+  </div>
+
+  <div class="form-group">
+  <div class="col-md-6 col-md-offset-4">
+  <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+  </div>
+<% end %>
+
+<a href ='/users/new'> No Account? Join Us Now ! </a> </br>
+<a href ='/gossips/'> Click Here to Return to the Index ! </a> 
+
+</center>

@@ -2,13 +2,10 @@
 
 </br> 
 
-<form action= <%= gossips_path %> method="POST">
-  <p> Gossip : </p> <input type="text" name="content">
-  <p> Your Username : </p> <input type="text" name="user_name"> 
-  </br> </br>
-  <input type="submit" value="Validate">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-</form> 
+<%= form_with model: @gossip, class: "nifty_form" do |f| %>
+<%= f.text_area :content, size: "60x12" %> </br>
+  <%= f.submit "Post your gossip" %>
+<% end %>
 
 </br>
 
