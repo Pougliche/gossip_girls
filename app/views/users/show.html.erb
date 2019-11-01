@@ -1,8 +1,14 @@
-<center>
-
-<h2> User :  <%= @user.user_name %></h2>
-<h2> Contact :  <%= @user.email %></h2>
-
 
 <center>
+<div class="card-columns'">
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title"><%= @user.user_name %> </h5>
+    <h5 class="card-text">Email: <%= @user.email %> </h5>
+  </div>
+</div>
+</div>
+
+</center>
 

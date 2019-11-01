@@ -9,8 +9,8 @@
 <% @gossip.each_with_index do |gossip, index| %>
 <div class="card" style="width: 18rem;">
   <div class="card-body">
-    <h5 class="card-title">Author: <%= gossip.user.user_name%> </h5>
-    <p class="card-text">Story: <%= gossip.content %> </p>
+    <h5 class="card-title"><%= gossip.user.user_name%> </h5>
+    <h5 class="card-text">" <%= gossip.content %> "</h5>
     <a class="card-link" <%= link_to "SHOW ME THE GOSSIP", gossip_path(gossip.id)%></a>
   </div>
 </div>

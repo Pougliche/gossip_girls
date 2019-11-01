@@ -3,7 +3,7 @@
 <% @user.each_with_index do |user, index| %>
 <div class="card" style="width: 18rem;">
   <div class="card-body">
-    <h5 class="card-title">User: <%= user.user_name%> </h5>
+    <h5 class="card-title"><%= user.user_name%> </h5>
     
     <a class="card-link" <%= link_to "SHOW ME THE USER", user_path(user.id)%></a>
   </div>

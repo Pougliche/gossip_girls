@@ -10,6 +10,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     
+ <link href="https://fonts.googleapis.com/css?family=Lobster|Merriweather&display=swap" rel="stylesheet"> 
   </head>
 
   <body>
@@ -34,6 +35,14 @@
          <li class="nav-item">
           <a class="nav-link" href="/users">User List</a>
         </li>
+        <ul class="nav-item navbar-right">
+      <% if logged_in? %>
+                                    <li>    <%= link_to "Login", new_session_path, class: 'btn btn-success' %>  </li>
+                                <% else %>
+                                    <li>    <%= link_to "Log out", session_path(session.id), method: :delete, class: 'btn btn-danger' %>  </li>
+                                <%end%>
+      
+    </ul>
     </div>
   </nav>
 
@@ -44,11 +53,7 @@
       <p class="lead">Spread false informations faster than STDs !</p>
     </div>
 
-<% if logged_in? %>
-                                        <%= link_to "Login", new_session_path, class: 'btn btn-success' %>
-                                <% else %>
-                                        <%= link_to "Log out", session_path(session.id), method: :delete, class: 'btn btn-danger' %>
-                                <%end%>
+
                               
 
 </header>
